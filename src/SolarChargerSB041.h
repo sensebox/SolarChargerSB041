@@ -1,60 +1,42 @@
-#ifndef SOLARCHARGER_H
-#define SOLARCHARGER_H
+/*
+  SolarChargerSB041.h - Library to read data from the SB041 solar charger
+  designed for the senseBox. Created by Björn Luig, Dec. 6, 2024. Released into
+  the public domain.
+*/
+
+#ifndef SOLARCHARGERSB041_H
+#define SOLARCHARGERSB041_H
 
 #include <Wire.h>
 
-class SolarCharger {
+#include "Arduino.h"
+
+class SolarChargerSB041 {
  public:
-  SolarCharger(uint8_t address = 0x32);
-#ifndef SOLARCHARGER_H
-#define SOLARCHARGER_H
-
-#include <Wire.h>
-
-      class SolarCharger {
-   public:
-    SolarCharger(uint8_t address = 0x32);
-
-    void update();
-    bool isConnected() const;
-    float getSolarPanelVoltage() const;
-    float getBatteryVoltage() const;
-    int getBatteryLevel() const;
-    bool isCharging() const;
-    bool isFastCharging() const;
-    float getBatteryTemperature() const;
-
-   private:
-    uint8_t address;
-    bool connected;
-    float solarPanelVoltage;
-    float batteryVoltage;
-    int batteryLevel;
-    bool charging;
-    bool fastCharging;
-    float batteryTemperature;
-  };
-
-#endif  // SOLARCHARGER_H
+  SolarChargerSB041(uint8_t address = 0x32);
 
   void update();
-  bool isConnected() const;
+  bool isChargerConnected() const;
   float getSolarPanelVoltage() const;
   float getBatteryVoltage() const;
-  int getBatteryLevel() const;
   bool isCharging() const;
   bool isFastCharging() const;
+  int getBatteryLevel() const;
+  bool isGoodInputVoltage() const;
+  bool isBatteryPresent() const;
   float getBatteryTemperature() const;
 
  private:
   uint8_t address;
-  bool connected;
+  bool chargerConnected;
   float solarPanelVoltage;
   float batteryVoltage;
-  int batteryLevel;
   bool charging;
   bool fastCharging;
+  int batteryLevel;
+  bool goodInputVoltage;
+  bool batteryPresent;
   float batteryTemperature;
 };
 
-#endif  // SOLARCHARGER_H
+#endif  // SOLARCHARGERSB041_H
