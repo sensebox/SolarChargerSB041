@@ -14,6 +14,11 @@ SolarChargerSB041::SolarChargerSB041(uint8_t address)
       batteryPresent(false),
       batteryTemperature(-1) {}
 
+void SolarChargerSB041::begin() {
+  Wire.begin();
+  SolarChargerSB041::update();
+}
+
 /*
  * I2C i/f with following info on address 0x32:
  * - Register 0: cell voltage, 20mV/LSB

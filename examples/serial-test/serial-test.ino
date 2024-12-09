@@ -1,11 +1,10 @@
 #include <SolarChargerSB041.h>
-#include <Wire.h>
-// #include <senseBoxIO.h> // only needer fo senseBox MCU
+#include <senseBoxIO.h> // only needer fo senseBox MCU
 
 SolarChargerSB041 charger;
 
 void setup() {
-  Wire.begin();
+  charger.begin();
   Serial.begin(9600);
 }
 

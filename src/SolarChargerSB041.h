@@ -15,6 +15,7 @@ class SolarChargerSB041 {
  public:
   SolarChargerSB041(uint8_t address = 0x32);
 
+  void begin();
   void update();
   bool isChargerConnected() const;
   float getSolarPanelVoltage() const;
